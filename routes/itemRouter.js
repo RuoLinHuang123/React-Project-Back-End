@@ -1,5 +1,5 @@
 const express = require("express");
-const Item = require('./item');
+const Item = require("../models/item");
 const router = express.Router();
 
 router.get("/", async (req, res) => {
@@ -8,4 +8,3 @@ router.get("/", async (req, res) => {
 });
 
 module.exports = router;
-

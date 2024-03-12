@@ -1,10 +1,10 @@
 const _ = require("lodash");
 const express = require("express");
 const Joi = require("joi");
-const Item = require("./item");
-const ItemDetail = require("./itemDetail");
+const Item = require("../models/item");
+const ItemDetail = require("../models/itemDetail");
 const router = express.Router();
-const auth = require('./auth');
+const auth = require("../middleware/auth");
 
 function validateItem(item) {
   const schema = Joi.object({
@@ -19,7 +19,7 @@ function validateItem(item) {
   return schema.validate(item);
 }
 
-router.post("/", auth,async (req, res) => {
+router.post("/", auth, async (req, res) => {
   const { error } = validateItem(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
